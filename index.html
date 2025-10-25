@@ -2,14 +2,341 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的GitHub主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页 - Gitee Pages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px auto; max-width: 800px; line-height: 1.6; }
-        h1 { color: #2c3e50; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 20px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 主要内容区 */
+        section {
+            padding: 60px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #6a11cb;
+            margin: 10px auto;
+        }
+        
+        /* 关于我部分 */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skill-bar {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-level {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: #6a11cb;
+            border-radius: 5px;
+        }
+        
+        /* 项目展示 */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-image {
+            height: 180px;
+            background-color: #6a11cb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        /* 联系我部分 */
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: #6a11cb;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的空间</h1>
-    <p>这里将展示我的项目和想法。</p>
+    <!-- 头部展示区 -->
+    <header>
+        <div class="container">
+            <!-- 头像设置：将图片URL替换为您自己的头像 -->
+            <div class="avatar">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/gitee.svg" alt="头像">
+            </div>
+            <h1>您的姓名</h1>
+            <p class="tagline">这里是您的个人简介或职业描述，例如：全栈开发者 | 技术爱好者</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 关于我部分 -->
+        <section id="about">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>在这里写下关于您的详细介绍。可以包括您的背景、兴趣、专业技能等。</p>
+                    <p>例如：我是一名充满热情的开发者，拥有X年的开发经验，专注于Web技术和创新解决方案。</p>
+                    <p>我喜欢学习新技术，解决复杂问题，并与他人分享知识。</p>
+                </div>
+                <div class="skills">
+                    <h3>我的技能</h3>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <!-- 可以添加更多技能 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目展示部分 -->
+        <section id="projects">
+            <h2>我的项目</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">项目名称一</h3>
+                        <p>这里是项目一的简要描述，介绍项目的主要功能和技术栈。</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">项目名称二</h3>
+                        <p>这里是项目二的简要描述，介绍项目的主要功能和技术栈。</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">项目名称三</h3>
+                        <p>这里是项目三的简要描述，介绍项目的主要功能和技术栈。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我部分 -->
+        <section id="contact">
+            <h2>联系我</h2>
+            <div class="contact-methods">
+                <a href="mailto:your-email@example.com" class="contact-item">
+                    <i class="contact-icon fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://gitee.com/your-profile" class="contact-item">
+                    <i class="contact-icon fab fa-git"></i>
+                    <span>Gitee</span>
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="contact-icon fab fa-weibo"></i>
+                    <span>微博</span>
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="contact-icon fab fa-weixin"></i>
+                    <span>微信</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 您的姓名. 本页面通过 Gitee Pages 托管</p>
+        </div>
+    </footer>
 </body>
 </html>
